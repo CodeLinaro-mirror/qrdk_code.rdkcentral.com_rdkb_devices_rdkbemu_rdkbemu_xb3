@@ -33,8 +33,9 @@ switch($timef){			//	[$mintime, $maxtime)
 		$mintime=strtotime("yesterday");
 	break;
 	case "Last week":
-		$maxtime=strtotime("this Monday");
-		$mintime=strtotime("last Monday");
+		$prev_week=strtotime("-1 week +1 day");
+                $maxtime=strtotime("this Monday", $prev_week);
+                $mintime=strtotime("last Monday", $prev_week);
 	break;
 	case "Last month":
 		$maxtime=strtotime("this month");
