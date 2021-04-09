@@ -47,7 +47,7 @@ else{
 
 	if ($state == 'true') {//stateful	
         getStr("Device.IP.Interface.1.IPv6Prefix.1."); //this line if a trick fix for Yan's framework bug, may delete in future 
-	
+		setStr("Device.RouterAdvertisement.InterfaceSetting.1.AdvOtherConfigFlag", "true", false);	
 		setStr("Device.RouterAdvertisement.InterfaceSetting.1.AdvManagedFlag", "true", true);
 
 		setStr("Device.DHCPv6.Server.X_CISCO_COM_Type", "Stateful", true);
@@ -56,6 +56,7 @@ else{
 		setStr("Device.DHCPv6.Server.Pool.1.LeaseTime", $ip_config['dhcpv6_lease_time'], true);
 	}
 	else{//stateless
+		setStr("Device.RouterAdvertisement.InterfaceSetting.1.AdvOtherConfigFlag", "false", false);
 		setStr("Device.RouterAdvertisement.InterfaceSetting.1.AdvManagedFlag", "false", true);  
 
 		setStr("Device.DHCPv6.Server.X_CISCO_COM_Type", "Stateless", true);
